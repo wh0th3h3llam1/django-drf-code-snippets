@@ -1,4 +1,6 @@
-class SerializerActionClassMixin(object):
+from typing import Any, Callable, Dict
+
+class SerializerActionClassMixin:
 	"""
 	A class which inhertis this mixins should have variable
 	`serializer_action_classes`.
@@ -24,6 +26,16 @@ class SerializerActionClassMixin(object):
 	get_serializer_class.
 	`lookup`: self.serializer_class, DefaultSerializer.
 	"""
+
+	serializer_action_classes: Dict[str, Any]
+	# serializer_action_classes: Dict[str, Callable]
+
+	def __init_subclass__(cls) -> None:
+		if not hasattr(cls, "serializer_action_classes"):
+			raise AttributeError(
+				"class '%s' must include `serializer_action_classes` attribute"
+				% cls.__name__
+			)
 
 	def get_serializer_class(self):
 		try:
