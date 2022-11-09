@@ -2,7 +2,7 @@ from typing import Any, Callable, Dict
 
 class SerializerActionClassMixin:
 	"""
-	A class which inhertis this mixins should have variable
+	A class which inhertis this mixin should have attribute
 	`serializer_action_classes`.
 
 	Look for serializer class in self.serializer_action_classes, which
