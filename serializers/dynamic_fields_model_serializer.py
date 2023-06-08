@@ -9,11 +9,11 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 
     def __init__(self, *args, **kwargs):
         # Don't pass the 'fields' arg up to the superclass
-        fields = kwargs.pop('fields', None)
+        fields = kwargs.pop("fields", None)
         exclude = kwargs.pop("exclude", None)
 
         # Adding this next line to the documented example
-        read_only_fields = kwargs.pop('read_only_fields', None)
+        read_only_fields = kwargs.pop("read_only_fields", None)
 
         # Instantiate the superclass normally
         super(DynamicFieldsModelSerializer, self).__init__(*args, **kwargs)
@@ -41,9 +41,11 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
                     pass
 
     def get_field_names(self, declared_fields, info):
-        expanded_fields = super(DynamicFieldsModelSerializer, self).get_field_names(declared_fields, info)
+        expanded_fields = super(DynamicFieldsModelSerializer, self).get_field_names(
+            declared_fields, info
+        )
 
-        if getattr(self.Meta, 'extra_fields', None):
+        if getattr(self.Meta, "extra_fields", None):
             return expanded_fields + self.Meta.extra_fields
         else:
             return expanded_fields

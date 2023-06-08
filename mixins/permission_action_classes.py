@@ -28,7 +28,10 @@ class PermissionActionClassMixin(object):
     def get_permissions(self):
         try:
             # return permission_classes depending on `action`
-            return [permission() for permission in self.permission_action_classes[self.action]]
-        except KeyError:
+            return [
+                permission()
+                for permission in self.permission_action_classes[self.action]
+            ]
+        except (AttributeError, KeyError):
             # action is not set return default permission_classes
             return super().get_permissions()

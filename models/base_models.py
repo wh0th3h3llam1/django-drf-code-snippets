@@ -1,5 +1,6 @@
 from model_utils.models import TimeStampedModel
 
+
 class BaseModel(TimeStampedModel):
     class Meta:
         abstract = True
@@ -27,5 +28,5 @@ class BaseModel(TimeStampedModel):
                         changed_fields.append(field_name)
                 except Exception as e:  # Catch field does not exist exception
                     pass
-            kwargs['update_fields'] = changed_fields
+            kwargs["update_fields"] = changed_fields
         super().save(*args, **kwargs)
