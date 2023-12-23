@@ -36,6 +36,8 @@ Frequently used DRF code snippets for models, serializers, mixins, filters and p
 
 - PermissionActionClassMixin
 - SerializerActionClassMixin
+- SerializerCreateUpdateOnlyMixin
+- MultipleNestedCreateUpdateDeleteMixin
 
 
 ### Pagination
